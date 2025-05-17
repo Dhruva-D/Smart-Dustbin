@@ -266,7 +266,7 @@ async def generate_qr_endpoint(request: GenerateQRRequest):
 # Add endpoint to serve web_interface.html
 @app.get("/", response_class=HTMLResponse)
 async def serve_web_interface():
-    with open("d:/NMIT_HACKS/web_interface.html", "r", encoding="utf-8") as f:
+    with open("web_interface.html", "r", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
 
