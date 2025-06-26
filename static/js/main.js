@@ -231,7 +231,7 @@ document.getElementById("scan-form").addEventListener("submit", async function (
         timerDiv.id = "qr-timer";
         document.getElementById("qr-section").appendChild(timerDiv);
       }
-      let seconds = 180;
+      let seconds = 300;
       const radius = 32;
       const circumference = 2 * Math.PI * radius;
       timerDiv.innerHTML = `
@@ -252,7 +252,8 @@ document.getElementById("scan-form").addEventListener("submit", async function (
         document.getElementById('timer-count').textContent = seconds;
         // Animate circle
         if (progressCircle) {
-          progressCircle.style.strokeDashoffset = (circumference * elapsed / 15).toString();
+          progressCircle.style.strokeDashoffset = (circumference * elapsed / 300).toString();
+
         }
         if (seconds <= 0) {
           clearInterval(interval);
