@@ -231,9 +231,9 @@ async def generate_qr_endpoint(request: GenerateQRRequest):
                     "object": analysis_json.get("object", "Unknown"),
                     "product_type": row[1] if row[1] else analysis_json.get("product_type", "Unknown"),
                     "number_of_items": obj.number_of_items,
-                    "coins_earned": obj.number_of_items * float(estimated_value),
+                    "estimated_value": obj.number_of_items * float(estimated_value),
                     "recyclable": analysis_json.get("recyclable", "Unknown"),
-                    # "profit_rating_out_of_10": analysis_json.get("profit_rating_out_of_10", 0)
+                    "profit_rating_out_of_10": analysis_json.get("profit_rating_out_of_10", 0)
                 }
                 
                 logging.info(f"Object data: {obj_data}")
@@ -266,7 +266,7 @@ async def generate_qr_endpoint(request: GenerateQRRequest):
 # Add endpoint to serve web_interface.html
 @app.get("/", response_class=HTMLResponse)
 async def serve_web_interface():
-    with open("d:/NMIT_HACKS/web_interface.html", "r", encoding="utf-8") as f:
+    with open("web_interface.html", "r", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
 
@@ -339,9 +339,9 @@ async def scan_item(file: UploadFile = File(...), user_id: str = Form(...), num_
                 "object": result_json.get("object", "Unknown"),
                 "product_type": result_json.get("product_type", "Unknown"),
                 "number_of_items": num_items,
-                "estimated_value": num_items * float(estimated_value),
+                "coins_earned": num_items * float(estimated_value),
                 "recyclable": result_json.get("recyclable", "Unknown"),
-                "profit_rating_out_of_10": result_json.get("profit_rating_out_of_10", 0)
+                
             }
             
             # Generate QR code for this item
@@ -365,4 +365,3 @@ async def scan_item(file: UploadFile = File(...), user_id: str = Form(...), num_
         import traceback
         logging.error(traceback.format_exc())
         return JSONResponse(content={"error": str(e)}, status_code=500)
-
