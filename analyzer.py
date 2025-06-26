@@ -25,7 +25,7 @@ Your task is to analyze the object shown in the provided image and respond to th
 Guidelines:
 - "recyclable" should be "Yes" only if the object can be commonly recycled in India.
 - "estimated_value" should reflect approximate income from recycling that item (based on scrap/reuse value).
-- "profit_rating_out_of_10" should be higher for higher recycling profit potential.
+
 
 Do not include anything other than the JSON output.
 """
