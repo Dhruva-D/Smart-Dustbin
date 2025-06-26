@@ -339,9 +339,9 @@ async def scan_item(file: UploadFile = File(...), user_id: str = Form(...), num_
                 "object": result_json.get("object", "Unknown"),
                 "product_type": result_json.get("product_type", "Unknown"),
                 "number_of_items": num_items,
-                "coins_earned": num_items * float(estimated_value),
+                "estimated_value": num_items * float(estimated_value),
                 "recyclable": result_json.get("recyclable", "Unknown"),
-                
+                "profit_rating_out_of_10": result_json.get("profit_rating_out_of_10", 0)
             }
             
             # Generate QR code for this item
