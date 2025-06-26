@@ -72,7 +72,7 @@ def main():
                         "product_id": row[0],
                         "product_name": row[4] if row[4] else "Unknown",
                         "number_of_items": int(num_items),
-                       
+                        "estimated_value": total_estimated_value,
                         "recyclable": row[2]
                     }
                     all_objects.append(obj_data)
